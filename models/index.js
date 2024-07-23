@@ -1,9 +1,10 @@
 const { Sequelize } = require('sequelize');
 
 // Konfigurasi koneksi Sequelize
-const sequelize = new Sequelize('dpsi', 'root', 'smaroe87', {
-    host: 'localhost',
-    dialect: 'mysql'
+const sequelize = new Sequelize('sql12721736', 'sql12721736', 'NhIZFg4IHi', {
+    host: 'sql12.freesqldatabase.com',
+    dialect: 'mysql',
+    dialectOptions: require('mysql2')
 });
 
 // Uji koneksi
