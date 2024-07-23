@@ -8,10 +8,10 @@ const { authenticate, authorize } = require('../middleware/auth');
 router.post('/', authenticate, authorize(['admin']), videoController.createVideo);
 
 // Get all videos
-router.get('/', authenticate, authorize(['siswa']), videoController.getAllVideos);
+router.get('/', authenticate, authorize(['siswa','admin']), videoController.getAllVideos);
 
 // Get a video by ID
-router.get('/:id',authenticate, authorize(['siswa']), videoController.getVideoById);
+router.get('/:id',authenticate, authorize(['siswa','admin']), videoController.getVideoById);
 
 // Update a video by ID
 router.put('/:id',authenticate, authorize(['admin']), videoController.updateVideo);

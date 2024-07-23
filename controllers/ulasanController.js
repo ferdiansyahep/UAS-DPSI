@@ -3,8 +3,11 @@ const Ulasan = require('../models/ulasan');
 // Create a new ulasan
 exports.createUlasan = async (req, res, next) => {
     try {
-        const { videoID, ulasan } = req.body;
-        const newUlasan = await Ulasan.create({ videoID, ulasan });
+        const { id, videoID, ulasan } = req.body;
+        if (!id || !videoID || !ulasan) {
+            return res.status(400).json({ message: 'User ID (id), Video ID (videoID), and Ulasan are required' });
+        }
+        const newUlasan = await Ulasan.create({ id, videoID, ulasan });
         res.status(201).json(newUlasan);
     } catch (err) {
         next(err);
@@ -38,8 +41,11 @@ exports.getUlasanById = async (req, res, next) => {
 // Update a ulasan by ID
 exports.updateUlasan = async (req, res, next) => {
     try {
-        const { videoID, ulasan } = req.body;
-        const [updated] = await Ulasan.update({ videoID, ulasan }, {
+        const { id, videoID, ulasan } = req.body;
+        if (!id || !videoID || !ulasan) {
+            return res.status(400).json({ message: 'User ID (id), Video ID (videoID), and Ulasan are required' });
+        }
+        const [updated] = await Ulasan.update({ id, videoID, ulasan }, {
             where: { ulasanID: req.params.id }
         });
 

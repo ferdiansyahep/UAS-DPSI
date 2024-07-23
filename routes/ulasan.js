@@ -5,7 +5,7 @@ const { authenticate, authorize } = require('../middleware/auth');
 
 
 // Create a new ulasan
-router.post('/', authenticate, authorize(['siswa']), ulasanController.createUlasan);
+router.post('/', ulasanController.createUlasan);
 
 // Get all ulasan
 router.get('/', ulasanController.getAllUlasan);
@@ -14,9 +14,9 @@ router.get('/', ulasanController.getAllUlasan);
 router.get('/:id', ulasanController.getUlasanById);
 
 // Update a ulasan by ID
-router.put('/:id', authenticate, authorize(['siswa']), ulasanController.updateUlasan);
+router.put('/:id', authenticate, authorize(['siswa','admin']), ulasanController.updateUlasan);
 
 // Delete a ulasan by ID
-router.delete('/:id', authenticate, authorize(['siswa']), ulasanController.deleteUlasan);
+router.delete('/:id', authenticate, authorize(['siswa','admin']), ulasanController.deleteUlasan);
 
 module.exports = router;
