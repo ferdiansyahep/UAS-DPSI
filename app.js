@@ -8,6 +8,7 @@ const authRouter = require('./routes/auth');
 const sequelize = require('./models/index');
 const videoRouter = require('./routes/video')
 const ulasanRouter = require('./routes/ulasan');
+const ortuRouter = require('./routes/ortu');
 
 
 const app = express();
@@ -22,6 +23,7 @@ app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/video', videoRouter);
 app.use('/ulasan', ulasanRouter);
+app.use('/ortu', ortuRouter);
 
 sequelize.sync()
     .then(() => {
