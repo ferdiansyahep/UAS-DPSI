@@ -9,7 +9,7 @@ const Ulasan = sequelize.define('Ulasan', {
         primaryKey: true,
         autoIncrement: true
     },
-    id: {
+    userID: {
         type: DataTypes.INTEGER,
         allowNull: false
     },
@@ -24,8 +24,4 @@ const Ulasan = sequelize.define('Ulasan', {
     }
 });
 
-Ulasan.belongsTo(Video, { foreignKey: 'videoID' });
-Video.hasMany(Ulasan, { foreignKey: 'videoID' });
-Ulasan.belongsTo(User, { foreignKey: 'id' });
-User.hasMany(Ulasan, { foreignKey: 'id' });
 module.exports = Ulasan;

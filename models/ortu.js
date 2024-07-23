@@ -8,12 +8,10 @@ const Ortu = sequelize.define('Ortu', {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
-    
     },
-    id: {
+    userID: {
         type: DataTypes.INTEGER,
-        allowNull: false,
-        unique: true
+        allowNull: false
     },
     nama: {
         type: DataTypes.STRING,
@@ -29,8 +27,5 @@ const Ortu = sequelize.define('Ortu', {
     },
 },
 );
-
-Ortu.belongsTo(User, { foreignKey: 'id' });
-User.hasMany(Ortu, { foreignKey: 'id' });
 
 module.exports = Ortu;
